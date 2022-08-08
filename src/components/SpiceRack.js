@@ -1,17 +1,17 @@
 import React from "react";
 import "../styles/inventoryItems.css";
 
-function Freezer() {
+function SpiceRack() {
   return (
     <div>
-      <h2>Freezer</h2>
+      <h2>Spice Rack</h2>
       <ul className="items">
-        <p>Peas</p>
-        <p>Mixed Fruit</p>
-        <p>Chips</p>
+        <p>Turmeric</p>
+        <p>Paprika</p>
+        <p>Oregano</p>
       </ul>
     </div>
   );
 }
 
-export default Freezer;
+export default SpiceRack;

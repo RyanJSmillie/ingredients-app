@@ -1,6 +1,9 @@
 import React from "react";
 import "../styles/inventory.css";
 import Fridge from "./Fridge";
+import Freezer from "./Freezer";
+import Cupboard from "./Cupboard";
+import SpiceRack from "./SpiceRack";
 
 function Inventory() {
   return (
@@ -9,13 +12,13 @@ function Inventory() {
         <Fridge />
       </div>
       <div className="freezerCard">
-        <p>Freezer</p>
+        <Freezer />
       </div>
       <div className="cupboardCard">
-        <p>Cupboard</p>
+        <Cupboard />
       </div>
       <div className="spiceRackCard">
-        <p>Spice Rack</p>
+        <SpiceRack />
       </div>
     </div>
   );
