@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import Recipe from "./Recipe";
 import Inventory from "./Inventory";
 import AccountInfo from "./AccountInfo";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       </div>
       <div className="body">
         <Routes>
-          <Route exact path="/" element={<Recipe />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route exact path="/recipes" element={<Recipe />} />
           <Route exact path="/inventory" element={<Inventory />} />
           <Route exact path="/account-info" element={<AccountInfo />} />
         </Routes>
