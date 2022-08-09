@@ -2,17 +2,23 @@ const getDb = require('../services/db');
 const bcrypt = require("bcryptjs");
 
 exports.create = async (req, res) => {
-  // const db = await getDb();
+  const db = await getDb();
    
     
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       console.log(hashedPassword);
       const name = req.body.name, email = req.body.email, password = hashedPassword;
+
+      await db.query('INSERT INTO Users (name, email, password) VALUES (?, ?, ?)', [
+        name,
+        email,
+        hashedPassword,
+      ]);
         res.status(201).send();
       } catch (err) {
         res.status(500).json(err);
       }
     
-      // db.close();
+      db.close();
 };
