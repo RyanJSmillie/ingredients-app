@@ -14,7 +14,4 @@ function Cupboard() {
   );
 }
 
-
-
-
 export default Cupboard;
