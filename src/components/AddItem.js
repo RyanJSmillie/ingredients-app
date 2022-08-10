@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const initialInventory = [
-  {
-    ingredients: {
-      id: "",
-      name: "",
-      measures: "",
-      unit: "",
-    },
-  },
-];
+const initialInventory = {
+  name: "",
+  measures: "",
+  unit: "",
+};
 
 function AddItem() {
-  const [fridgeInventory, setFridgeInventory] = useState(initialInventory);
+  const [inputState, setInputState] = useState(initialInventory);
+  const [inventory, setInventory] = useState([]);
 
   function handleChange(event) {
-    setFridgeInventory({
-      ...fridgeInventory,
+    setInputState({
+      ...inputState,
       [event.target.name]: event.target.value,
     });
   }
@@ -25,20 +21,7 @@ function AddItem() {
   function handleAdd(event) {
     event.preventDefault();
 
-    const { name, measures, unit } = fridgeInventory;
-
-    const newFridgeInventory = fridgeInventory.concat({
-      ingredients: {
-        name,
-        measures,
-        unit,
-        id: uuidv4(),
-      },
-    });
-
-    console.log(newFridgeInventory);
-
-    setFridgeInventory(newFridgeInventory);
+    setInventory((current) => [...current, inputState]);
   }
 
   return (
@@ -50,7 +33,7 @@ function AddItem() {
             <input
               id="item"
               name="item"
-              defaultValue={fridgeInventory.name}
+              defaultValue={inputState.name}
               onChange={handleChange}
               placeholder="Milk"
             />
@@ -60,7 +43,7 @@ function AddItem() {
             <input
               id="measures"
               name="measures"
-              defaultValue={fridgeInventory.measures}
+              defaultValue={inputState.measures}
               onChange={handleChange}
               placeholder="50"
             />
@@ -70,7 +53,7 @@ function AddItem() {
             <input
               id="unit"
               name="unit"
-              defaultValue={fridgeInventory.unit}
+              defaultValue={inputState.unit}
               onChange={handleChange}
               placeholder="ml"
             />
@@ -78,9 +61,9 @@ function AddItem() {
           <button type="submit">Add</button>
         </div>
       </form>
-
-      {/* <ul>
-        {fridgeInventory.map((item) => (
+{/* 
+      <ul>
+        {Inventory.map((item) => (
           <li key={item.id}>{item.name}</li>
         ))}
       </ul> */}
