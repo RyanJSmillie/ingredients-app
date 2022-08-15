@@ -1,15 +1,14 @@
 import React from "react";
 import "../styles/inventoryItems.css";
+import AddItem from "./AddItem";
 
 function Cupboard() {
   return (
     <div>
       <h2>Cupboard</h2>
-      <ul className="items">
-        <p>Beans</p>
-        <p>Rice</p>
-        <p>Pasta</p>
-      </ul>
+      <div className="add-item-cupboard">
+        <AddItem />
+      </div>
     </div>
   );
 }

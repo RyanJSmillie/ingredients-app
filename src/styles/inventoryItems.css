@@ -2,3 +2,19 @@
     margin: 0;
     padding: 0;
 }
+
+.add-item-fridge {
+    display: none;
+}
+
+.add-item-freezer {
+    display: none;
+}
+
+.add-item-cupboard {
+    display: none;
+}
+
+.add-item-spice-rack {
+    display: none;
+}
