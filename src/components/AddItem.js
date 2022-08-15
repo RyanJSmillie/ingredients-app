@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 const initialInventory = {
   name: "",
@@ -61,12 +61,11 @@ function AddItem() {
           <button type="submit">Add</button>
         </div>
       </form>
-{/* 
       <ul>
-        {Inventory.map((item) => (
+        {inventory.map((item) => (
           <li key={item.id}>{item.name}</li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 }
