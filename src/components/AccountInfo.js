@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { React } from "react";
 
 function AccountInfo() {
   return (
@@ -6,29 +7,29 @@ function AccountInfo() {
       <p>Account Info</p>
       <div className="form-content-right">
         <form className="form">
-        <h1>Account Information</h1>
-        <div className="form-inputs">
+          <h1>Account Information</h1>
+          <div className="form-inputs">
             <label htmlFor="username" className="form-label">
-              Username  
+              Username
             </label>
-            <input 
-                type="text" 
-                name="username"
-                className="form-input"
-                placeholder="Enter your username"
-                />
-        </div>
-        <div className="form-inputs">
+            <input
+              type="text"
+              name="username"
+              className="form-input"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div className="form-inputs">
             <label htmlFor="address" className="form-label">
-                Address
+              Address
             </label>
-            <input 
-                type="text" 
-                name="address"
-                className="form-input"
-                placeholder="Enter your address"
-                />
-        </div>
+            <input
+              type="text"
+              name="address"
+              className="form-input"
+              placeholder="Enter your address"
+            />
+          </div>
         </form>
       </div>
     </div>
