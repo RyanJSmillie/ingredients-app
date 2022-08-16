@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../styles/inventoryItems.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { CSSTransition } from "react-transition-group";
 import AddItem from "./AddItem";
 
 function Fridge() {
@@ -7,23 +10,28 @@ function Fridge() {
     display: false,
   };
 
-  const [formState, setFormState] = useState(initialState);
+  const [formState, setFormState] = useState(initialState.display);
 
   function hideForm(event) {
     event.preventDefault();
 
-    setFormState({ display: true });
+    setFormState((current) => !current);
   }
 
   return (
     <div>
-      <h2>Fridge</h2>
-      <button type="submit" onSubmit={hideForm}>
-        Add Item
-      </button>
-      <div style={{ display: formState.display ? "block" : "none" }}>
-        <AddItem />
+      <div className="cardHeading">
+        <h2>Fridge</h2>
+        <button className="addButton" type="submit" onClick={hideForm}>
+          <FontAwesomeIcon className="plusIcon" icon={faPlus} />
+        </button>
       </div>
+
+      <CSSTransition in={formState} timeout={300} classNames="item-form">
+        <div style={{ display: formState ? "block" : "none" }}>
+          <AddItem />
+        </div>
+      </CSSTransition>
     </div>
   );
 }

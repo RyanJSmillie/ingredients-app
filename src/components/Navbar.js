@@ -6,7 +6,9 @@ import "../styles/navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <img className="navbarlogo" src={logo} alt="logo" />
+      <Link className="navbar-links" to="/">
+        <img className="navbarlogo" src={logo} alt="logo" />
+      </Link>
       <ul className="navbar-links">
         <Link className="navbar-links" to="/">
           Recipes
