@@ -1,24 +1,20 @@
 const express = require("express");
-const mysql = require("mysql2");
+const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
+const recipeRouter = require("./routes/recipe");
+const ingredientsRouter = require("./routes/ingredients");
 
 const app = express();
 
 app.use(express.json());
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "ingredients_library_mysql"
-});
+app.use("/register", registerRouter),
 
-db.connect ( (error) => {
-    if(error) {
-        console.log(error)
-    } else {
-        console.log("MYSQL Connected...")
-    }
-});
+app.use("/login", loginRouter),
+
+app.use("/recipe", recipeRouter),
+
+app.use("/ingredients", ingredientsRouter),
 
 app.get('/', (req, res) => {
     res.send("Hello User!")
