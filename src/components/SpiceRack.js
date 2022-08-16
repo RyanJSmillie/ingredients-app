@@ -1,15 +1,14 @@
 import React from "react";
 import "../styles/inventoryItems.css";
+import AddItem from "./AddItem";
 
 function SpiceRack() {
   return (
     <div>
       <h2>Spice Rack</h2>
-      <ul className="items">
-        <p>Turmeric</p>
-        <p>Paprika</p>
-        <p>Oregano</p>
-      </ul>
+      <div className="add-item-spice-rack">
+        <AddItem />
+      </div>
     </div>
   );
 }

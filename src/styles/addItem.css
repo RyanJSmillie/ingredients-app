@@ -1,0 +1,16 @@
+.add-ingredient-entries {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.ingredient-form {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.ingredient-form-button {
+    margin-left: 25%;
+    margin-right: 25%;
+}
