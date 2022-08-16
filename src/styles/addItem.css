@@ -8,9 +8,24 @@
     display: flex;
     justify-content: space-around;
     padding: 10px;
+    font-size: 1.25vw;
 }
 
 .ingredient-form-button {
     margin-left: 25%;
     margin-right: 25%;
+    margin-top: 5px;
+    border: none; 
+    background-color: rgb(92, 188, 92);
+    height: 25px;
+    color: white;
+    border-radius: 5%;
+}
+
+.ingredient-form-button:hover {
+    background-color: rgb(115, 200, 115);
+}
+
+input {
+    width: 40%;
 }

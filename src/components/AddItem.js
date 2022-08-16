@@ -7,6 +7,13 @@ const initialInventory = {
   unit: "",
 };
 
+const unitOptions = [
+  { label: "Grams", value: "grams" },
+  { label: "Kilograms", value: "kilograms" },
+  { label: "Millilitres", value: "millilitres" },
+  { label: "Litres", value: "litres" },
+];
+
 function AddItem() {
   const [inputState, setInputState] = useState(initialInventory);
   // eslint-disable-next-line no-unused-vars
@@ -31,10 +38,10 @@ function AddItem() {
         <div className="add-ingredient-entries">
           <label htmlFor="ingredient-name">
             <div className="ingredient-form">
-              Item
+              Item:
               <input
-                id="item"
-                name="item"
+                id="name"
+                name="name"
                 defaultValue={inputState.name}
                 onChange={handleChange}
                 placeholder="Milk, Peas, Rice..."
@@ -43,7 +50,7 @@ function AddItem() {
           </label>
           <label htmlFor="ingredient-measurement">
             <div className="ingredient-form">
-              Measurement
+              Measurement:
               <input
                 id="measures"
                 name="measures"
@@ -55,18 +62,21 @@ function AddItem() {
           </label>
           <label htmlFor="ingredient-unit">
             <div className="ingredient-form">
-              Unit
-              <input
+              Unit:
+              <select
                 id="unit"
                 name="unit"
                 defaultValue={inputState.unit}
                 onChange={handleChange}
-                placeholder="millilitres, grams..."
-              />
+              >
+                {unitOptions.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
             </div>
           </label>
           <button className="ingredient-form-button " type="submit">
-            Add
+            Add!
           </button>
         </div>
       </form>
