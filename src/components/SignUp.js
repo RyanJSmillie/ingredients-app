@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import Alert from "./Alert";
 
 function SignUp() {
@@ -61,11 +62,35 @@ function SignUp() {
   // const handleFieldChange = (event) => {
   //   setFields({ ...fields, [event.target.name]: event.target.value });
   // };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+
+  const Register = async (e) => {
+    e.preventDefault();
+    try {
+      await axios
+        .post("http://localhost:5000/register", {
+          name,
+          email,
+          password,
+        })
+        .headers({ "Access-Control-Allow-Origin": "*" });
+      navigate.push("/");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
 
   return (
     <div className="addUser">
       <h2>Sign-up here!</h2>
-      <form>
+      <form onSubmit={Register} className="box">
+        <p className="has-text-centered">{msg}</p>
         {/* <Alert message={alert.message} success={alert.isSuccess} /> */}
         <label htmlFor="name">
           Name:
@@ -76,6 +101,8 @@ function SignUp() {
             // value={fields.name}
             // onChange={handleFieldChange}
             placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </label>
 
@@ -87,6 +114,8 @@ function SignUp() {
             // value={fields.email}
             // onChange={handleFieldChange}
             placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
 
@@ -98,10 +127,12 @@ function SignUp() {
             // value={fields.password}
             // onChange={handleFieldChange}
             placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
-        <label htmlFor="preferences">
+        {/* <label htmlFor="preferences">
           Recipe Preferences
           <select
             id="preferences"
@@ -116,9 +147,9 @@ function SignUp() {
             <option value="Pescatarian">Pescatarian</option>
             <option value="Dairy Free">Dairy Free</option>
           </select>
-        </label>
+        </label> */}
 
-        <button type="submit" className="Submit">
+        <button type="submit" className="Submit" onClick={Register}>
           Submit
         </button>
       </form>

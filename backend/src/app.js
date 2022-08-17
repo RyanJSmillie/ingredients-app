@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const recipeRouter = require("./routes/recipe");
@@ -12,6 +13,7 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/recipe", recipeRouter);
 app.use("/ingredients", ingredientsRouter);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello User!");
