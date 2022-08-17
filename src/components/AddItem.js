@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { v4 as uuidv4 } from "uuid";
+import "../styles/addItem.css";
 
 const initialInventory = {
   name: "",
@@ -7,8 +7,16 @@ const initialInventory = {
   unit: "",
 };
 
+const unitOptions = [
+  { label: "Grams", value: "grams" },
+  { label: "Kilograms", value: "kilograms" },
+  { label: "Millilitres", value: "millilitres" },
+  { label: "Litres", value: "litres" },
+];
+
 function AddItem() {
   const [inputState, setInputState] = useState(initialInventory);
+  // eslint-disable-next-line no-unused-vars
   const [inventory, setInventory] = useState([]);
 
   function handleChange(event) {
@@ -26,46 +34,52 @@ function AddItem() {
 
   return (
     <div>
-      <form onSubmit={handleAdd}>
+      <form className="addItem" onSubmit={handleAdd}>
         <div className="add-ingredient-entries">
           <label htmlFor="ingredient-name">
-            Item
-            <input
-              id="item"
-              name="item"
-              defaultValue={inputState.name}
-              onChange={handleChange}
-              placeholder="Milk"
-            />
+            <div className="ingredient-form">
+              Item:
+              <input
+                id="name"
+                name="name"
+                defaultValue={inputState.name}
+                onChange={handleChange}
+                placeholder="Milk, Peas, Rice..."
+              />
+            </div>
           </label>
           <label htmlFor="ingredient-measurement">
-            Measurement
-            <input
-              id="measures"
-              name="measures"
-              defaultValue={inputState.measures}
-              onChange={handleChange}
-              placeholder="50"
-            />
+            <div className="ingredient-form">
+              Measurement:
+              <input
+                id="measures"
+                name="measures"
+                defaultValue={inputState.measures}
+                onChange={handleChange}
+                placeholder="50..."
+              />
+            </div>
           </label>
           <label htmlFor="ingredient-unit">
-            Unit
-            <input
-              id="unit"
-              name="unit"
-              defaultValue={inputState.unit}
-              onChange={handleChange}
-              placeholder="ml"
-            />
+            <div className="ingredient-form">
+              Unit:
+              <select
+                id="unit"
+                name="unit"
+                defaultValue={inputState.unit}
+                onChange={handleChange}
+              >
+                {unitOptions.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
           </label>
-          <button type="submit">Add</button>
+          <button className="ingredient-form-button " type="submit">
+            Add!
+          </button>
         </div>
       </form>
-      <ul>
-        {inventory.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
     </div>
   );
 }
