@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/addItem.css";
+import axios from "axios";
 
 const initialInventory = {
   name: "",
@@ -29,7 +30,27 @@ function AddItem() {
   function handleAdd(event) {
     event.preventDefault();
 
-    setInventory((current) => [...current, inputState]);
+    // setInventory((current) => [...current, inputState]);
+
+    const { name, measures, unit } = inventory;
+
+    axios.post("http://localhost:5000/ingredients", {
+      name,
+      measures,
+      unit,
+    });
+    // .then(() =>
+    //   setAlert({
+    //     message: "Property Added",
+    //     isSuccess: true,
+    //   })
+    // )
+    // .catch(() =>
+    //   setAlert({
+    //     message: "Server error. Please try again later.",
+    //     isSuccess: false,
+    //   })
+    // );
   }
 
   return (

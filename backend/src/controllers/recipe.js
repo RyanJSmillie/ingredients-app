@@ -1,3 +1,3 @@
-exports.create = async (req, res)=> {
-    res.sendStatus(200);
-}
+exports.create = async (req, res) => {
+  res.sendStatus(200);
+};
