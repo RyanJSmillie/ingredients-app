@@ -6,7 +6,7 @@ import axios from "axios";
 function SignUp() {
   const config = {
     method: "post",
-    url: "https://localhost:5000/register",
+    url: "https://localhost:3307/register",
     headers: {
       name: "",
       email: "",
