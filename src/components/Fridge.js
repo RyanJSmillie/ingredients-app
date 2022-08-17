@@ -1,17 +1,12 @@
 import React from "react";
 import "../styles/inventoryItems.css";
-
-// const fridgeInventory = [];
+import AddItem from "./AddItem";
 
 function Fridge() {
   return (
     <div>
       <h2>Fridge</h2>
-      <ul className="items">
-        <p>Milk</p>
-        <p>Cheese</p>
-        <p>Eggs</p>
-      </ul>
+      <AddItem />
     </div>
   );
 }

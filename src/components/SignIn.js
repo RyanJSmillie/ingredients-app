@@ -3,8 +3,8 @@ import React from "react";
 
 function SignIn() {
   return (
-    <div>
-      <p>Sign-in here!</p>
+    <div className="signin-wrapper">
+      <h1>Sign-in here to see your personalised recipes!</h1>
       <form>
         <label>
           Email:
@@ -14,7 +14,11 @@ function SignIn() {
           Password:
           <input type="password" name="password" />
         </label>
-        <input type="submit" value="Submit" />
+        <div>
+          <button type="submit" value="Submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
