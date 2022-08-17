@@ -11,17 +11,12 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/register", registerRouter),
-
-app.use("/login", loginRouter),
-
-app.use("/recipe", recipeRouter),
-
-app.use("/ingredients", ingredientsRouter),
-
-app.get('/', (req, res) => {
-    res.send("Hello User!")
+app.use("/register", registerRouter);
+app.use("/login", loginRouter);
+app.use("/recipe", recipeRouter);
+app.use("/ingredients", ingredientsRouter);
+app.get("/", (req, res) => {
+  res.send("Hello User!");
 });
-
 
 module.exports = app;

@@ -43,10 +43,12 @@ const setUpDatabase = async () => {
 
     // ingredients table
 
-    // await db.query(`CREATE TABLE IF NOT EXISTS Ingredients (
-    //       ingredient_id INT PRIMARY KEY auto_increment,
-    //       ingredient VARCHAR(50),
-    // `);
+    await db.query(`CREATE TABLE IF NOT EXISTS Ingredients (
+          ingredient_id INT PRIMARY KEY auto_increment,
+          name VARCHAR(50),
+          measures INTEGER(15),
+          unit VARCHAR (50))
+          `);
 
     // userIngredients table needed
     db.close();
