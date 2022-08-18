@@ -41,15 +41,7 @@ const setUpDatabase = async () => {
         password VARCHAR(100))
         `);
 
-        //ingredients table
-
-    // await db.query(`CREATE TABLE IF NOT EXISTS Ingredients (
-    //       ingredient_id INT PRIMARY KEY auto_increment,
-    //       ingredient VARCHAR(50),    
-// `);
-
-// userIngredients table needed
-    db.close();
+    db.end();
 
   } catch (err) {
    // if something goes wrong, console.log the error and the current environment variables
