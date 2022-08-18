@@ -1,7 +1,7 @@
 .inventory {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    /* grid-template-rows: 100%; */
+    /* grid-template-rows: 25% 75%; */
     text-align: center;
     padding: 15px;
 }
@@ -9,6 +9,7 @@
 .fridgeCard {
     margin: 5px;
     grid-column: 1/2;
+    /* grid-row: 2/3; */
     border: solid 1px black;
     border-radius: 4px;
 }
@@ -16,6 +17,7 @@
 .freezerCard {
     margin: 5px;
     grid-column: 2/3;
+    /* grid-row: 2/3; */
     border: solid 1px black;
     border-radius: 4px;
 }
@@ -23,6 +25,7 @@
 .cupboardCard {
     margin: 5px;
     grid-column: 3/4;
+    /* grid-row: 2/3; */
     border: solid 1px black;
     border-radius: 4px;
 }
@@ -30,6 +33,17 @@
 .spiceRackCard {
     margin: 5px;
     grid-column: 4/5;
+    /* grid-row: 2/3; */
+    border: solid 1px black;
+    border-radius: 4px;
+}
+
+.addItemCard {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2rem;
+    /* grid-column: 1/5;
+    grid-row: 1/2; */
     border: solid 1px black;
     border-radius: 4px;
 }

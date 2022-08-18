@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/addItem.css";
 import axios from "axios";
+import ItemSearch from "./ItemSearch";
 
 const initialInventory = {
   name: "",
   measures: "",
   unit: "",
+  storage: "",
 };
 
 const unitOptions = [
@@ -13,6 +15,13 @@ const unitOptions = [
   { label: "Kilograms", value: "kilograms" },
   { label: "Millilitres", value: "millilitres" },
   { label: "Litres", value: "litres" },
+];
+
+const storageOptions = [
+  { label: "Fridge", value: "fridge" },
+  { label: "Freezer", value: "freezer" },
+  { label: "Cupboard", value: "cupboard" },
+  { label: "Spice Rack", value: "spice-rack" },
 ];
 
 function AddItem() {
@@ -57,18 +66,10 @@ function AddItem() {
     <div>
       <form className="addItem" onSubmit={handleAdd}>
         <div className="add-ingredient-entries">
-          <label htmlFor="ingredient-name">
-            <div className="ingredient-form">
-              Item:
-              <input
-                id="name"
-                name="name"
-                defaultValue={inputState.name}
-                onChange={handleChange}
-                placeholder="Milk, Peas, Rice..."
-              />
-            </div>
-          </label>
+          <div className="ingredient-form">
+            Item:
+            <ItemSearch />
+          </div>
           <label htmlFor="ingredient-measurement">
             <div className="ingredient-form">
               Measurement:
@@ -91,6 +92,21 @@ function AddItem() {
                 onChange={handleChange}
               >
                 {unitOptions.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+          </label>
+          <label htmlFor="ingredient-storage">
+            <div className="ingredient-form">
+              Where do you store this item?
+              <select
+                id="storage"
+                name="storage"
+                defaultValue={inputState.storage}
+                onChange={handleChange}
+              >
+                {storageOptions.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}
               </select>
