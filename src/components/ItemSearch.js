@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import getIngredients from "../requests/getIngredients";
+import "../styles/itemsearch.css";
 
 function ItemSearch({ setSearchResults }) {
   const [value, setValue] = useState();

@@ -3,6 +3,7 @@ import "../styles/addItem.css";
 import axios from "axios";
 import ItemSearch from "./ItemSearch";
 import SearchResults from "./SearchResults";
+import Alert from "./Alert";
 
 const initialInventory = {
   name: "",
@@ -27,10 +28,18 @@ const storageOptions = [
   { label: "Spice Rack", value: "spice-rack" },
 ];
 
+const initialState = {
+  alert: {
+    message: "",
+    isSuccess: false,
+  },
+};
+
 function AddItem() {
   const [inputState, setInputState] = useState(initialInventory);
   const [inventory, setInventory] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [alert, setAlert] = useState(initialState.alert);
 
   function handleChange(event) {
     setInputState({
@@ -46,32 +55,33 @@ function AddItem() {
 
     const { name, measures, unit, storage } = inventory;
 
-    axios.post("http://localhost:5000/ingredients", {
-      name,
-      measures,
-      unit,
-      storage,
-    });
-    // .then(() =>
-    //   setAlert({
-    //     message: "Property Added",
-    //     isSuccess: true,
-    //   })
-    // )
-    // .catch(() =>
-    //   setAlert({
-    //     message: "Server error. Please try again later.",
-    //     isSuccess: false,
-    //   })
-    // );
+    axios
+      .post("http://localhost:5000/ingredients", {
+        name,
+        measures,
+        unit,
+        storage,
+      })
+      .then(() =>
+        setAlert({
+          message: "Item Added",
+          isSuccess: true,
+        })
+      )
+      .catch(() =>
+        setAlert({
+          message: "Server error. Please try again later.",
+          isSuccess: false,
+        })
+      );
   }
 
   return (
     <div>
-      <div className="ingredient-form">
-        Item:
+      <div className="search-form">
         <ItemSearch setSearchResults={setSearchResults} />
         <SearchResults results={searchResults} setInputState={setInputState} />
+        <Alert message={alert.message} success={alert.isSuccess} />
       </div>
       <form className="addItem" onSubmit={handleAdd}>
         <div className="add-ingredient-entries">

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/inventory.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Fridge from "./Fridge";
 import Freezer from "./Freezer";
 import Cupboard from "./Cupboard";

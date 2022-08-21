@@ -2,9 +2,38 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 import "../styles/signinup.css";
+import RecipeResults from "./RecipeResults";
+
+// eslint-disable-next-line no-unused-vars
+const dummyInventory = [
+  {
+    name: "pasta",
+    measures: 250,
+    unit: "grams",
+    storage: "cupboard",
+  },
+  {
+    name: "canned tomato sauce",
+    measures: 400,
+    unit: "grams",
+    storage: "cupboard",
+  },
+  {
+    name: "fresh basil",
+    measures: 50,
+    unit: "grams",
+    storage: "cupboard",
+  },
+  {
+    name: "cheese",
+    measures: 50,
+    unit: "grams",
+    storage: "fridge",
+  },
+];
 
 function Recipe() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(12345);
 
   if (!token) {
     return (
@@ -20,7 +49,12 @@ function Recipe() {
     );
   }
 
-  return <div className="recipes">Recipes </div>;
+  return (
+    <div>
+      <div className="recipes">Recipes </div>
+      <RecipeResults inventory={dummyInventory} />
+    </div>
+  );
 }
 
 export default Recipe;
