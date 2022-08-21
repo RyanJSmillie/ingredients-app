@@ -1,57 +1,33 @@
-import axios from "axios";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
+import getIngredients from "../requests/getIngredients";
 
-const initialSearch = {
-  name: "",
-};
-
-function ItemSearch() {
-  const [searchState, setSearchState] = useState(initialSearch);
-
-  function handleChange(event) {
-    setSearchState({
-      ...searchState,
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  function handleSearch(event) {
+function ItemSearch({ setSearchResults }) {
+  const [value, setValue] = useState();
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { name } = searchState;
-
-    axios
-      .get(
-        `https://api.spoonacular.com/food/ingredients/search?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&query=${name}`
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+    setSearchResults(await getIngredients(value));
+  };
 
   return (
-    <div>
-      <label htmlFor="Search">
-        <form className="searchItem" onSubmit={handleSearch}>
-          <input
-            className="item-search-input"
-            type="text"
-            id="name"
-            name="name"
-            defaultValue={searchState.name}
-            onChange={handleChange}
-            placeholder="Milk, Peas, Rice..."
-          />
-          <button className="item-search-button" type="submit">
-            Search!
-          </button>
-        </form>
-      </label>
-    </div>
+    <label htmlFor="search">
+      <form className="searchForm" onSubmit={handleSubmit}>
+        <input
+          className="searchInput"
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button className="searchButton" type="submit">
+          Search
+        </button>
+      </form>
+    </label>
   );
 }
 
 export default ItemSearch;
+
+ItemSearch.propTypes = {
+  setSearchResults: PropTypes.func.isRequired,
+};
