@@ -8,8 +8,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    /* align-items: center; */
     padding: 10px;
-line-height: 25px;
+    line-height: 25px;
 }
 
 .ingredient-form-button {
@@ -29,4 +30,14 @@ line-height: 25px;
 
 input {
     width: 40%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* padding: 10px; */
+    /* width: 60%; */
+    line-height: 25px;
 }

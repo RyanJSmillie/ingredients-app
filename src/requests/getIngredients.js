@@ -12,6 +12,8 @@ function getIngredients(query) {
     .then((response) => {
       const ingredientsResults = response.data.results;
 
+      console.log(response);
+
       const ingredients = ingredientsResults.map((ingredient) => {
         const container = {};
 
