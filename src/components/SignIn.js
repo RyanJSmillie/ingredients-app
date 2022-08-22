@@ -8,7 +8,7 @@ import Login from "./Login";
 
 function SignIn() {
   const { setUser } = useContext(AuthContext);
-  const [details, setDetails] = useState({ email: "", password: "" });
+  const [details, setDetails] = useState({});
   const [error, setError] = useState(null);
 
   const handleChange = ({ target: { value, id } }) => {
@@ -27,22 +27,16 @@ function SignIn() {
       setUser(currentUser);
     }
   };
-
-  const renderErrorMessage = (name) =>
-    name === error.name && <div className="error">{error.message}</div>;
-
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Email </label>
           <input type="text" name="email" required onChange={handleChange} />
-          {renderErrorMessage("email")}
         </div>
         <div className="input-container">
           <label>Password </label>
           <input type="password" name="pass" required onChange={handleChange} />
-          {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
           <input type="submit" />

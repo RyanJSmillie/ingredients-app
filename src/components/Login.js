@@ -17,9 +17,10 @@ function Login() {
     data,
   };
 
-  axios(config)
+  return axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      return response;
     })
     .catch(function (error) {
       console.log(error);
