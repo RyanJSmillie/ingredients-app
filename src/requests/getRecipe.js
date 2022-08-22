@@ -15,7 +15,7 @@ function getRecipe(inventory) {
 
   return axios
     .get(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&ingredients=${query}&number=2`
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&ingredients=${query}&number=3`
     )
     .then((response) => {
       const recipeResults = response.data;
@@ -25,8 +25,29 @@ function getRecipe(inventory) {
       const recipes = recipeResults.map((recipe) => {
         const container = {};
 
-        container.name = recipe.name;
+        const ID = async () => {
+          try {
+            await axios
+              .get(
+                `https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&includeNutrition=false`
+              )
+              .then((secondResponse) => {
+                container.url = secondResponse.data.sourceUrl;
+              });
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        (async () => {
+          await ID();
+        })();
+
+        container.name = recipe.title;
         container.image = recipe.image;
+        container.missedIngredients = recipe.missedIngredients;
+        container.missedIngredientCount = recipe.missedIngredientCount;
+        container.id = recipe.id;
 
         return container;
       });

@@ -18,6 +18,7 @@ const unitOptions = [
   { label: "Kilograms", value: "kilograms" },
   { label: "Millilitres", value: "millilitres" },
   { label: "Litres", value: "litres" },
+  { label: "Number", value: "number" },
 ];
 
 const storageOptions = [

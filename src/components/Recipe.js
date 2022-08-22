@@ -30,10 +30,28 @@ const dummyInventory = [
     unit: "grams",
     storage: "fridge",
   },
+  {
+    name: "milk",
+    measures: 50,
+    unit: "millilitres",
+    storage: "fridge",
+  },
+  {
+    name: "egg",
+    measures: 3,
+    unit: "number",
+    storage: "fridge",
+  },
+  {
+    name: "cheese",
+    measures: 50,
+    unit: "grams",
+    storage: "fridge",
+  },
 ];
 
 function Recipe() {
-  const [token, setToken] = useState(12345);
+  const [token, setToken] = useState();
 
   if (!token) {
     return (
@@ -51,7 +69,6 @@ function Recipe() {
 
   return (
     <div>
-      <div className="recipes">Recipes </div>
       <RecipeResults inventory={dummyInventory} />
     </div>
   );
