@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
-import "../styles/signinup.css";
+import "../styles/signup.css";
 
 function Recipe() {
   const [token, setToken] = useState();
