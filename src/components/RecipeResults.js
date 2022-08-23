@@ -1,23 +1,33 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "../styles/reciperesults.css";
 import getRecipe from "../requests/getRecipe";
+import retrieveIngredients from "../requests/retrieveingredients";
 
-function RecipeResults({ inventory }) {
+function RecipeResults() {
   const [recipeList, setRecipeList] = useState([]);
+  const [inventory, setInventory] = useState();
+
+  // const updateInventory = async (event) => {
+  //   event.preventDefault();
+
+  //   setInventory(await retrieveIngredients());
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setRecipeList(await getRecipe(inventory));
+    setInventory(await retrieveIngredients());
+
+    console.log(inventory);
+
+    setRecipeList(await getRecipe(inventory[4]));
   };
 
   recipeList.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
 
-  console.log(recipeList, "sorted");
-
-  if (!inventory.length) {
-    return <p>No recipes available, please update your inventory!</p>;
-  }
+  // if (!inventory.length) {
+  //   return <p>No recipes available, please update your inventory!</p>;
+  // }
 
   if (recipeList.length === 0) {
     <div className="recipe-search-card">
@@ -68,6 +78,6 @@ function RecipeResults({ inventory }) {
 
 export default RecipeResults;
 
-RecipeResults.propTypes = {
-  inventory: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-};
+// RecipeResults.propTypes = {
+//   inventory: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+// };

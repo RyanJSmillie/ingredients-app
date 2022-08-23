@@ -7,14 +7,8 @@ const ingredientsRouter = require("./routes/ingredients");
 
 const app = express();
 
-app.use(express.json());
-
-app.use("/register", registerRouter);
-app.use("/login", loginRouter);
-app.use("/recipe", recipeRouter);
-app.use("/ingredients", ingredientsRouter);
 app.use(cors());
-
+app.use(express.json());
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);

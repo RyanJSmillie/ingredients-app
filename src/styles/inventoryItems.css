@@ -66,3 +66,16 @@ h2 {
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;
   }
+
+  .card-Heading {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inventory-list {
+    font-size: small;
+  }
+
+  ul {
+    padding-inline-start: 20px;
+  }

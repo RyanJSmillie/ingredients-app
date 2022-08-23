@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 
 function AccountInfo() {
-
   const [accountDetails, setAccountDetails] = useState({
     username: "DanielleD8134",
     emailAddress: "test@test.com",
@@ -15,26 +14,26 @@ function AccountInfo() {
     // call API to update account details
   };
   const onChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name } = e.target;
+    const { value } = e.target;
     setAccountDetails({ ...accountDetails, [name]: value });
   };
 
-  //   const [token, setToken] = useState();
+  const [token, setToken] = useState();
 
-  //   if (!token) {
-  //     return (
-  //       <div>
-  //         <br />
-  //         <SignIn setToken={setToken} className="signin-link" to="/signin" />
-  //         <br />
-  //         <br />
-  //         <Link className="signup-link" to="/signup">
-  //           Not a member yet? Sign-up here!
-  //         </Link>
-  //       </div>
-  //     );
-  //   }
+  if (!token) {
+    return (
+      <div>
+        <br />
+        <SignIn setToken={setToken} className="signin-link" to="/signin" />
+        <br />
+        <br />
+        <Link className="signup-link" to="/signup">
+          Not a member yet? Sign-up here!
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div>

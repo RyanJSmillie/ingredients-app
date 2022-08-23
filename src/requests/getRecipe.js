@@ -7,9 +7,11 @@ function getRecipe(inventory) {
 
   const searchNames = inventory.map((ingredient) => ingredient.name);
 
-  const removeSpaces = searchNames.map((name) => name.replaceAll(" ", "-"));
+  const removeNull = searchNames.filter((element) => {
+    return element !== null;
+  });
 
-  console.log(removeSpaces, "removeSpaces");
+  const removeSpaces = removeNull.map((name) => name.replaceAll(" ", "-"));
 
   const query = removeSpaces.join(",+");
 

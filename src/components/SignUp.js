@@ -5,63 +5,6 @@ import { useNavigate } from "react-router-dom";
 // import Alert from "./Alert";
 
 function SignUp() {
-  // const config = {
-  //   method: "post",
-  //   url: "https://localhost:3307/register",
-  //   headers: {
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     preferences: "",
-  //   },
-  // };
-
-  // axios(config)
-  //   .then(function (response) {
-  //     console.log(JSON.stringify(response.data));
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-
-  // const initialState = {
-  //   fields: {
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     preferences: "",
-  //   },
-  //   alert: {
-  //     message: "",
-  //     isSuccess: false,
-  //   },
-  // };
-
-  // const [fields, setFields] = useState(initialState.fields);
-  // const [alert, setAlert] = useState(initialState.alert);
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setAlert({ message: "", isSuccess: false });
-  //   axios
-  //     .post(`http://localhost:5000/register`, { ...fields })
-  //     .then(() =>
-  //       setAlert({
-  //         message: "User Added",
-  //         isSuccess: true,
-  //       })
-  //     )
-  //     .catch(() =>
-  //       setAlert({
-  //         message: "Server error. Please try again later.",
-  //         isSuccess: false,
-  //       })
-  //     );
-  // };
-
-  // const handleFieldChange = (event) => {
-  //   setFields({ ...fields, [event.target.name]: event.target.value });
-  // };
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -93,7 +36,6 @@ function SignUp() {
       <h2>Sign-up here!</h2>
       <form onSubmit={Register} className="box">
         <p className="has-text-centered">{msg}</p>
-        {/* <Alert message={alert.message} success={alert.isSuccess} /> */}
         <label htmlFor="name">
           Name:
           <input

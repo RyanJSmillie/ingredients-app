@@ -38,7 +38,7 @@ const initialState = {
 
 function AddItem() {
   const [inputState, setInputState] = useState(initialInventory);
-  const [inventory, setInventory] = useState([]);
+
   const [searchResults, setSearchResults] = useState([]);
   const [alert, setAlert] = useState(initialState.alert);
 
@@ -49,20 +49,11 @@ function AddItem() {
     });
   }
 
-  function handleAdd(event) {
+  async function handleAdd(event) {
     event.preventDefault();
 
-    setInventory((current) => [...current, inputState]);
-
-    const { name, measures, unit, storage } = inventory;
-
     axios
-      .post("http://localhost:5000/ingredients", {
-        name,
-        measures,
-        unit,
-        storage,
-      })
+      .post("http://localhost:5001/ingredients", inputState)
       .then(() =>
         setAlert({
           message: "Item Added",

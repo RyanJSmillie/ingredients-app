@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import SignIn from "./SignIn";
-import "../styles/signinup.css";
 import RecipeResults from "./RecipeResults";
 
-// eslint-disable-next-line no-unused-vars
 const dummyInventory = [
   {
     name: "pasta",
@@ -50,15 +49,14 @@ const dummyInventory = [
   },
 ];
 
+function Recipe({ user }) {
+  console.log(user, "user");
 
-function Recipe() {
-  const [token, setToken] = useState(12345);
-
-  if (!token) {
+  if (!user) {
     return (
       <div>
         <br />
-        <SignIn setToken={setToken} className="signin-link" to="/signin" />
+        <SignIn className="signin-link" to="/signin" />
         <br />
         <br />
         <Link className="signup-link" to="/signup">
@@ -76,3 +74,7 @@ function Recipe() {
 }
 
 export default Recipe;
+
+Recipe.propTypes = {
+  user: PropTypes.objectOf(PropTypes.number).isRequired,
+};
