@@ -8,7 +8,7 @@ function Login() {
 
   const config = {
     method: "post",
-    url: "http://localhost:5001/register",
+    url: "http://localhost:5001/login",
     headers: {
       "Access-Control-Allow-Origin": "true",
       "Content-Type": "application/json",
@@ -18,7 +18,7 @@ function Login() {
 
   return axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      console.log(JSON.stringify(response.data), "login response");
       return response;
     })
     .catch(function (error) {

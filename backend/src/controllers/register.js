@@ -5,6 +5,8 @@ const getDb = require("../services/db");
 exports.create = async (req, res) => {
   const db = await getDb();
 
+  console.log("in register controller");
+
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const { name, email } = req.body;

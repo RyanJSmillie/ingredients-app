@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/alert.css";
 
-
 function Alert({ message, success }) {
   if (!message) return null;
 
@@ -15,19 +14,15 @@ function Alert({ message, success }) {
 
 export default Alert;
 
-
 Alert.defaultProps = {
   success: false,
 };
-
 
 Alert.propTypes = {
   message: PropTypes.string.isRequired,
   success: PropTypes.bool,
 };
 
-
 Alert.defaultProps = {
   success: false,
 };
-

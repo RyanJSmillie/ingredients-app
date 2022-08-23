@@ -29,9 +29,9 @@ function App() {
       <AuthContext.Provider value={{ user, setUser }}>
         <div className="body">
           <Routes>
-            <Route exact path="/" element={<Recipe />} />
+            <Route exact path="/" element={<Recipe user={user} />} />
             <Route exact path="/signup" element={<SignUp />} />
-            <Route exact path="signin" element={<SignIn />} />
+            <Route exact path="/signin" element={<SignIn />} />
             <Route exact path="/inventory" element={<Inventory />} />
             <Route exact path="/account-info" element={<AccountInfo />} />
           </Routes>
