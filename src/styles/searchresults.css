@@ -1,0 +1,26 @@
+.ingredient-search-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2.5vw;
+}
+
+.ingredient-search-card {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+    padding: 15px;
+}
+
+.ingredient-image {
+    grid-column: 1/2;
+}
+
+.ingredient-name {
+    grid-column: 2/3;
+}
+
+.ingredient-input {
+    grid-column: 3/4;
+}

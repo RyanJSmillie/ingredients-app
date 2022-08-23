@@ -1,23 +1,46 @@
 import React, { useState } from "react";
 import "../styles/addItem.css";
+import axios from "axios";
+import ItemSearch from "./ItemSearch";
+import SearchResults from "./SearchResults";
+import Alert from "./Alert";
 
 const initialInventory = {
   name: "",
   measures: "",
   unit: "",
+  storage: "",
 };
 
 const unitOptions = [
+  { label: "-", value: "-" },
   { label: "Grams", value: "grams" },
   { label: "Kilograms", value: "kilograms" },
   { label: "Millilitres", value: "millilitres" },
   { label: "Litres", value: "litres" },
+  { label: "Number", value: "number" },
 ];
+
+const storageOptions = [
+  { label: "-", value: "-" },
+  { label: "Fridge", value: "fridge" },
+  { label: "Freezer", value: "freezer" },
+  { label: "Cupboard", value: "cupboard" },
+  { label: "Spice Rack", value: "spice-rack" },
+];
+
+const initialState = {
+  alert: {
+    message: "",
+    isSuccess: false,
+  },
+};
 
 function AddItem() {
   const [inputState, setInputState] = useState(initialInventory);
-  // eslint-disable-next-line no-unused-vars
   const [inventory, setInventory] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [alert, setAlert] = useState(initialState.alert);
 
   function handleChange(event) {
     setInputState({
@@ -30,24 +53,39 @@ function AddItem() {
     event.preventDefault();
 
     setInventory((current) => [...current, inputState]);
+
+    const { name, measures, unit, storage } = inventory;
+
+    axios
+      .post("http://localhost:5000/ingredients", {
+        name,
+        measures,
+        unit,
+        storage,
+      })
+      .then(() =>
+        setAlert({
+          message: "Item Added",
+          isSuccess: true,
+        })
+      )
+      .catch(() =>
+        setAlert({
+          message: "Server error. Please try again later.",
+          isSuccess: false,
+        })
+      );
   }
 
   return (
     <div>
+      <div className="search-form">
+        <ItemSearch setSearchResults={setSearchResults} />
+        <SearchResults results={searchResults} setInputState={setInputState} />
+        <Alert message={alert.message} success={alert.isSuccess} />
+      </div>
       <form className="addItem" onSubmit={handleAdd}>
         <div className="add-ingredient-entries">
-          <label htmlFor="ingredient-name">
-            <div className="ingredient-form">
-              Item:
-              <input
-                id="name"
-                name="name"
-                defaultValue={inputState.name}
-                onChange={handleChange}
-                placeholder="Milk, Peas, Rice..."
-              />
-            </div>
-          </label>
           <label htmlFor="ingredient-measurement">
             <div className="ingredient-form">
               Measurement:
@@ -70,7 +108,26 @@ function AddItem() {
                 onChange={handleChange}
               >
                 {unitOptions.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </label>
+          <label htmlFor="ingredient-storage">
+            <div className="ingredient-form">
+              Where do you store this item?
+              <select
+                id="storage"
+                name="storage"
+                defaultValue={inputState.storage}
+                onChange={handleChange}
+              >
+                {storageOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
             </div>

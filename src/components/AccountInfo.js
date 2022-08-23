@@ -4,27 +4,43 @@ import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 
 function AccountInfo() {
-  const [token, setToken] = useState();
 
-  if (!token) {
-    return (
-      <div>
-        <br />
-        <SignIn setToken={setToken} className="signin-link" to="/signin" />
-        <br />
-        <br />
-        <Link className="signup-link" to="/signup">
-          Not a member yet? Sign-up here!
-        </Link>
-      </div>
-    );
-  }
+  const [accountDetails, setAccountDetails] = useState({
+    username: "DanielleD8134",
+    emailAddress: "test@test.com",
+    password: "password",
+  });
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    // call API to update account details
+  };
+  const onChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setAccountDetails({ ...accountDetails, [name]: value });
+  };
+
+  //   const [token, setToken] = useState();
+
+  //   if (!token) {
+  //     return (
+  //       <div>
+  //         <br />
+  //         <SignIn setToken={setToken} className="signin-link" to="/signin" />
+  //         <br />
+  //         <br />
+  //         <Link className="signup-link" to="/signup">
+  //           Not a member yet? Sign-up here!
+  //         </Link>
+  //       </div>
+  //     );
+  //   }
 
   return (
     <div>
       <p>Account Info</p>
       <div className="form-content-right">
-        <form className="form">
+        <form className="form" onSubmit={onFormSubmit}>
           <h1>Account Information</h1>
           <div className="form-inputs">
             <label htmlFor="username" className="form-label">
@@ -33,21 +49,39 @@ function AccountInfo() {
             <input
               type="text"
               name="username"
+              value={accountDetails.username}
+              onChange={onChange}
               className="form-input"
               placeholder="Enter your username"
             />
           </div>
           <div className="form-inputs">
-            <label htmlFor="address" className="form-label">
-              Address
+            <label htmlFor="emailAddress" className="form-label">
+              Email Address
             </label>
             <input
               type="text"
-              name="address"
+              name="EmailAddress"
+              value={accountDetails.emailAddress}
+              onChange={onChange}
               className="form-input"
-              placeholder="Enter your address"
+              placeholder="Enter your email address"
             />
           </div>
+          <div className="form-inputs">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              value={accountDetails.password}
+              onChange={onChange}
+              className="form-input"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit">Update</button>
         </form>
       </div>
     </div>
