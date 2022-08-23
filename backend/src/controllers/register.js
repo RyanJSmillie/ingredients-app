@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const getDb = require("../services/db");
 
+// eslint-disable-next-line consistent-return
 exports.create = async (req, res) => {
   const db = await getDb();
 

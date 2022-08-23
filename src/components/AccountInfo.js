@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 
 function AccountInfo() {
+
   const [accountDetails, setAccountDetails] = useState({
     username: "DanielleD8134",
     emailAddress: "test@test.com",

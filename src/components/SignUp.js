@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function SignUp() {
   // const config = {
   //   method: "post",
-  //   url: "https://localhost:5000/register",
+  //   url: "https://localhost:3307/register",
   //   headers: {
   //     name: "",
   //     email: "",
@@ -65,6 +65,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [preferences, setPreferences] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -72,12 +73,13 @@ function SignUp() {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:5000/register", {
+        .post("http://localhost:5001/register", {
           name,
           email,
           password,
+          preferences,
         })
-        .headers({ "Access-Control-Allow-Origin": "*" });
+        .headers({ "Access-Control-Allow-Origin": "true" });
       navigate.push("/");
     } catch (error) {
       if (error.response) {
@@ -98,8 +100,6 @@ function SignUp() {
             id="name"
             name="name"
             type="text"
-            // value={fields.name}
-            // onChange={handleFieldChange}
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -111,8 +111,6 @@ function SignUp() {
           <input
             id="email"
             name="email"
-            // value={fields.email}
-            // onChange={handleFieldChange}
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -124,21 +122,19 @@ function SignUp() {
           <input
             id="password"
             name="password"
-            // value={fields.password}
-            // onChange={handleFieldChange}
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
-        {/* <label htmlFor="preferences">
+        <label htmlFor="preferences">
           Recipe Preferences
           <select
             id="preferences"
             name="preferences"
-            // value={fields.preferences}
-            // onChange={handleFieldChange}
+            value={preferences}
+            onChange={(e) => setPreferences(e.target.value)}
             placeholder="Vegan"
           >
             <option value="Vegan">Vegan</option>
@@ -147,7 +143,7 @@ function SignUp() {
             <option value="Pescatarian">Pescatarian</option>
             <option value="Dairy Free">Dairy Free</option>
           </select>
-        </label> */}
+        </label>
 
         <button type="submit" className="Submit" onClick={Register}>
           Submit
