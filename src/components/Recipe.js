@@ -52,7 +52,7 @@ const dummyInventory = [
 
 
 function Recipe() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(12345);
 
   if (!token) {
     return (
