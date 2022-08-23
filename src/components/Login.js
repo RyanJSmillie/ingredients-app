@@ -2,7 +2,6 @@ import axios from "axios";
 
 function Login() {
   const data = JSON.stringify({
-    name: "TEST1",
     email: "TEST2@test.com",
     password: "password",
   });

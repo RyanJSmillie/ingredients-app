@@ -79,7 +79,7 @@ function SignUp() {
           password,
           preferences,
         })
-        .headers({ "Access-Control-Allow-Origin": "*" });
+        .headers({ "Access-Control-Allow-Origin": "true" });
       navigate.push("/");
     } catch (error) {
       if (error.response) {

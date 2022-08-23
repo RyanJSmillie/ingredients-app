@@ -7,7 +7,7 @@ import AuthContext from "./AuthContext";
 import Login from "./Login";
 
 function SignIn() {
-  const { setUser } = useContext(AuthContext);
+  const { setUser, user } = useContext(AuthContext);
   const [details, setDetails] = useState({});
   const [error, setError] = useState(null);
 
@@ -50,7 +50,7 @@ function SignIn() {
     <div className="signin">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {setDetails ? <div>User is successfully logged in</div> : renderForm}
+        {user ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
