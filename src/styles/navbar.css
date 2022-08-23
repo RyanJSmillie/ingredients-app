@@ -25,6 +25,7 @@
     text-decoration: none;
     color: white;
     transition: all .3s ease-in;
+    font-weight: bold;
   }
 
   .navbar-links:hover {

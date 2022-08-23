@@ -15,7 +15,7 @@ function getRecipe(inventory) {
 
   return axios
     .get(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&ingredients=${query}&number=3`
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=fec6a5d805ed462ab6b47e10443e4cb0&ingredients=${query}&number=6`
     )
     .then((response) => {
       const recipeResults = response.data;

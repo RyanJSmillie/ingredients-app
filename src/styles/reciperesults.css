@@ -1,16 +1,21 @@
 .recipe-search-results {
     display: flex;
-    justify-content: space-evenly;
+    /* flex-direction: column; */
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .recipe-card {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    /* justify-content: left; */
     margin: 10px;
     align-items: center;
     line-height: 25px;
+    border: solid grey .5px;
+    border-radius: 2%;
+    padding: 5px;
+    max-width: 26rem;
 }
 
 img {
@@ -23,12 +28,29 @@ img:hover {
     opacity: .5;
 }
 
-a {
+.ingredient-name {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    text-align: center;
 }
 
-a:hover {
-    color: rgb(92, 188, 92);;
+.ingredient-name:hover {
+    color: rgb(92, 188, 92);
+    align-items: center;
+    text-align: center;
+}
+
+.recipe-image-name {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.recipe-ingredients {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
 }

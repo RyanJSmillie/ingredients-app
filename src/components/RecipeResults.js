@@ -40,21 +40,25 @@ function RecipeResults({ inventory }) {
       <div className="recipe-search-results">
         {recipeList.map((recipe) => (
           <div key={recipe.name} className="recipe-card">
-            <a href={recipe.url}>
-              <img
-                href={recipe.url}
-                className="recipe-image"
-                src={recipe.image}
-                alt="reicpe-img"
-              />
-            </a>
-            <a href={recipe.url} className="ingredient-name">
-              {recipe.name}
-            </a>
-            <b>You are missing {recipe.missedIngredientCount} ingredients.</b>
-            {recipe.missedIngredients.map((ingredient) => (
-              <small key={ingredient.name}>{ingredient.name}</small>
-            ))}
+            <div className="recipe-image-name">
+              <a href={recipe.url}>
+                <img
+                  href={recipe.url}
+                  className="recipe-image"
+                  src={recipe.image}
+                  alt="reicpe-img"
+                />
+              </a>
+              <a href={recipe.url} className="ingredient-name">
+                {recipe.name}
+              </a>
+            </div>
+            <div className="recipe-ingredients">
+              <b>You are missing {recipe.missedIngredientCount} ingredients:</b>
+              {recipe.missedIngredients.map((ingredient) => (
+                <small key={ingredient.name}>{ingredient.name}</small>
+              ))}
+            </div>
           </div>
         ))}
       </div>
