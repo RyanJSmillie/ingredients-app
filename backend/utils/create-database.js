@@ -47,7 +47,8 @@ const setUpDatabase = async () => {
           ingredient_id INT PRIMARY KEY auto_increment,
           name VARCHAR(50),
           measures INTEGER(15),
-          unit VARCHAR (50))
+          unit VARCHAR (50),
+          storage VARCHAR (50))
           `);
 
     // userIngredients table needed

@@ -6,9 +6,11 @@
 
 .ingredient-form {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    /* align-items: center; */
     padding: 10px;
-    font-size: 1.25vw;
+    line-height: 25px;
 }
 
 .ingredient-form-button {
@@ -28,4 +30,14 @@
 
 input {
     width: 40%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* padding: 10px; */
+    /* width: 60%; */
+    line-height: 25px;
 }

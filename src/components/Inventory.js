@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "../styles/inventory.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+// import axios from "axios";
 import Fridge from "./Fridge";
 import Freezer from "./Freezer";
 import Cupboard from "./Cupboard";
 import SpiceRack from "./SpiceRack";
 import AddItem from "./AddItem";
+import retrieveIngredients from "../requests/retrieveingredients";
 
 function Inventory() {
   const initialState = {
@@ -15,12 +17,22 @@ function Inventory() {
   };
 
   const [formState, setFormState] = useState(initialState.display);
+  const [ingredientList, setIngredientList] = useState([]);
 
   function hideForm(event) {
     event.preventDefault();
 
     setFormState((current) => !current);
   }
+
+  const updateInventory = async (event) => {
+    event.preventDefault();
+
+    setIngredientList(await retrieveIngredients());
+  };
+
+  console.log(ingredientList, "inventory ingredients");
+
   return (
     <div>
       <div className="addItemCard">
@@ -37,18 +49,25 @@ function Inventory() {
           </div>
         </CSSTransition>
       </div>
+      <button
+        className="inventory-button"
+        type="submit"
+        onClick={updateInventory}
+      >
+        Update Inventory!
+      </button>
       <div className="inventory">
         <div className="fridgeCard">
-          <Fridge />
+          <Fridge inventory={ingredientList[0]} />
         </div>
         <div className="freezerCard">
-          <Freezer />
+          <Freezer inventory={ingredientList[1]} />
         </div>
         <div className="cupboardCard">
-          <Cupboard />
+          <Cupboard inventory={ingredientList[2]} />
         </div>
         <div className="spiceRackCard">
-          <SpiceRack />
+          <SpiceRack inventory={ingredientList[3]} />
         </div>
       </div>
     </div>

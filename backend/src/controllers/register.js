@@ -1,8 +1,11 @@
 const bcrypt = require("bcryptjs");
 const getDb = require("../services/db");
 
+// eslint-disable-next-line consistent-return
 exports.create = async (req, res) => {
   const db = await getDb();
+
+  console.log("in register controller");
 
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
