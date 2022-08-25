@@ -21,21 +21,21 @@ function AccountInfo() {
     setAccountDetails({ ...accountDetails, [name]: value });
   };
 
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
 
-  if (!token) {
-    return (
-      <div>
-        <br />
-        <SignIn setToken={setToken} className="signin-link" to="/signin" />
-        <br />
-        <br />
-        <Link className="signup-link" to="/signup">
-          Not a member yet? Sign-up here!
-        </Link>
-      </div>
-    );
-  }
+  // if (!token) {
+  //   return (
+  //     <div>
+  //       <br />
+  //       <SignIn setToken={setToken} className="signin-link" to="/signin" />
+  //       <br />
+  //       <br />
+  //       <Link className="signup-link" to="/signup">
+  //         Not a member yet? Sign-up here!
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="main">
